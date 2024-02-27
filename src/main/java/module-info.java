@@ -1,6 +1,7 @@
 module com.primeiro.javafx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.primeiro.javafx to javafx.fxml;
