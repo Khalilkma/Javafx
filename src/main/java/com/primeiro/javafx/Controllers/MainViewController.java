@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
 import com.primeiro.javafx.Main;
+import com.primeiro.javafx.model.entities.Department;
 import com.primeiro.javafx.model.services.DepartmentService;
 import com.primeiro.javafx.util.Alerts;
 import javafx.fxml.FXML;
@@ -29,6 +30,8 @@ public class MainViewController implements Initializable {
 
     @FXML
     private MenuItem menuItemAbout;
+
+
 
     @FXML
     public void onMenuItemSellerAction() {
