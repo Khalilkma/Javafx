@@ -1,6 +1,7 @@
 package com.primeiro.javafx.Controllers;
 
 import com.primeiro.javafx.Main;
+import com.primeiro.javafx.listeners.DataChangeListener;
 import com.primeiro.javafx.model.entities.Department;
 import com.primeiro.javafx.model.services.DepartmentService;
 import com.primeiro.javafx.util.Alerts;
@@ -26,7 +27,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DepartmentListController implements Initializable {
+public class DepartmentListController implements Initializable, DataChangeListener {
 
     private DepartmentService service;
 
@@ -85,6 +86,7 @@ public class DepartmentListController implements Initializable {
             DepartmentFormController controller = loader.getController();
             controller.setDepartment(obj);
             controller.setDepartmentService(new DepartmentService());
+            controller.subscribeDataChengeListener(this);
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
@@ -98,6 +100,11 @@ public class DepartmentListController implements Initializable {
         catch (IOException e) {
             Alerts.showAlert("IO Exception", "Error loading view", e.getMessage(), Alert.AlertType.ERROR);
         }
+    }
+
+    @Override
+    public void onDataChanged(){
+        updateTableView();
     }
 }
 
