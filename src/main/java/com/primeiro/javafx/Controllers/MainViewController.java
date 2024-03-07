@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 import com.primeiro.javafx.Main;
 import com.primeiro.javafx.model.entities.Department;
 import com.primeiro.javafx.model.services.DepartmentService;
+import com.primeiro.javafx.model.services.SellerService;
 import com.primeiro.javafx.util.Alerts;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +36,10 @@ public class MainViewController implements Initializable {
 
     @FXML
     public void onMenuItemSellerAction() {
-        System.out.println("onMenuItemSellerAction");
+       loadView("/com/primeiro/javafx/Fxml/SellerList.fxml", (SellerListController controller) -> {
+            controller.setSellerService(new SellerService());
+            controller.updateTableView();
+        });
     }
 
     @FXML
